@@ -25,6 +25,11 @@ namespace ToDoTasks.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTask(Models.CreateTaskDto taskDto)
         {
+            if (string.IsNullOrWhiteSpace(taskDto.Title))
+                return BadRequest("Title cannot be empty");
+
+            if (taskDto.Title.Length > 200)
+                return BadRequest("Title cannot exceed 200 characters");
             var task = new Models.AppTask
             {
                 Title = taskDto.Title,
