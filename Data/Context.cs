@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ToDoTasks.Models;
 
 namespace ToDoTasks.Data
 {
-    public class Context:DbContext
+    public class Context: IdentityDbContext<AppUser>
     {
         public Context(DbContextOptions<Context> options) : base(options)
         {
